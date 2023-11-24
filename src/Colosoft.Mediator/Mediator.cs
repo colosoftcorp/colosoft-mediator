@@ -72,7 +72,7 @@ namespace Colosoft.Mediator
                 throw new ArgumentNullException(nameof(request));
             }
 
-            var handler = (RequestHandlerWrapper)RequestHandlers.GetOrAdd(request.GetType(), requestType =>
+            var handler = (RequestHandlerWrapper)RequestHandlers.GetOrAdd(typeof(TRequest), requestType =>
             {
                 var wrapperType = typeof(RequestHandlerWrapperImpl<>).MakeGenericType(requestType);
                 var wrapper = Activator.CreateInstance(wrapperType) ?? throw new InvalidOperationException($"Could not create wrapper type for {requestType}");
