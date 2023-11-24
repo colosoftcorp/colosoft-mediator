@@ -10,6 +10,7 @@ namespace Colosoft.Mediator.Test
         {
             string? Message { get; }
         }
+
         public interface IPing : IStreamRequest<IPong>
         {
             string? Message { get; }

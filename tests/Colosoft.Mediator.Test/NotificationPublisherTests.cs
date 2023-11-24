@@ -18,13 +18,14 @@ namespace Colosoft.Mediator.Test
 
         public class FirstHandler : INotificationHandler<Notification>
         {
-            public async Task Handle(Notification notification, CancellationToken cancellationToken)
-                => await Task.Delay(500, cancellationToken);
+            public async Task Handle(Notification notification, CancellationToken cancellationToken) =>
+                await Task.Delay(500, cancellationToken);
         }
+
         public class SecondHandler : INotificationHandler<Notification>
         {
-            public async Task Handle(Notification notification, CancellationToken cancellationToken)
-                => await Task.Delay(250, cancellationToken);
+            public async Task Handle(Notification notification, CancellationToken cancellationToken) =>
+                await Task.Delay(250, cancellationToken);
         }
 
         [Fact]

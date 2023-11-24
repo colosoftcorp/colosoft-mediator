@@ -43,7 +43,6 @@ namespace Colosoft.Mediator.Test
 
         public class GenericTypeConstraintJing : GenericTypeRequestHandlerTestClass<Jing>
         {
-
         }
 
         public class Jing : IRequest

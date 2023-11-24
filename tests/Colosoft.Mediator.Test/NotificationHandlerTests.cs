@@ -40,8 +40,7 @@ namespace Colosoft.Mediator.Test
 
             await handler.Handle(
                 new Ping() { Message = "Ping" },
-                default
-            );
+                default);
 
             var result = builder.ToString();
             result.ShouldContain("Ping Pong");

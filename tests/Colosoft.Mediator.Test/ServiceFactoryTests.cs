@@ -22,8 +22,7 @@ namespace Colosoft.Mediator.Test
             var mediator = new Mediator(serviceProvider);
 
             await Assert.ThrowsAsync<InvalidOperationException>(
-                () => mediator.Send(new Ping())
-            );
+                () => mediator.Send(new Ping()));
         }
     }
 }

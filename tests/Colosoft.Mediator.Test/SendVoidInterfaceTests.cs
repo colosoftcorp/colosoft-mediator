@@ -46,7 +46,6 @@ namespace Colosoft.Mediator.Test
                 cfg.For<IMediator>().Use<Mediator>();
             });
 
-
             var mediator = container.GetInstance<IMediator>();
 
             await mediator.Send(new Ping { Message = "Ping" });

@@ -117,13 +117,13 @@ namespace Colosoft.Mediator.Test
         [Fact]
         public async Task Should_throw_for_send()
         {
-            await Should.ThrowAsync<LamarMissingRegistrationException>(async () => await mediator.Send(new Ping()));
+            await Should.ThrowAsync<LamarMissingRegistrationException>(async () => await this.mediator.Send(new Ping()));
         }
 
         [Fact]
         public async Task Should_throw_for_void_send()
         {
-            await Should.ThrowAsync<LamarMissingRegistrationException>(async () => await mediator.Send(new VoidPing()));
+            await Should.ThrowAsync<LamarMissingRegistrationException>(async () => await this.mediator.Send(new VoidPing()));
         }
 
         [Fact]
@@ -184,11 +184,12 @@ namespace Colosoft.Mediator.Test
                 });
                 cfg.For<IMediator>().Use<Mediator>();
             });
-            var mediator = container.GetInstance<IMediator>();
+
+            var mediator1 = container.GetInstance<IMediator>();
 
             NullPing request = null!;
 
-            await Should.ThrowAsync<ArgumentNullException>(async () => await mediator.Send(request));
+            await Should.ThrowAsync<ArgumentNullException>(async () => await mediator1.Send(request));
         }
 
         [Fact]
@@ -205,11 +206,12 @@ namespace Colosoft.Mediator.Test
                 });
                 cfg.For<IMediator>().Use<Mediator>();
             });
-            var mediator = container.GetInstance<IMediator>();
+
+            var mediator1 = container.GetInstance<IMediator>();
 
             VoidNullPing request = null!;
 
-            await Should.ThrowAsync<ArgumentNullException>(async () => await mediator.Send(request));
+            await Should.ThrowAsync<ArgumentNullException>(async () => await mediator1.Send(request));
         }
 
         [Fact]
@@ -226,11 +228,12 @@ namespace Colosoft.Mediator.Test
                 });
                 cfg.For<IMediator>().Use<Mediator>();
             });
-            var mediator = container.GetInstance<IMediator>();
+
+            var mediator1 = container.GetInstance<IMediator>();
 
             NullPinged notification = null!;
 
-            await Should.ThrowAsync<ArgumentNullException>(async () => await mediator.Publish<INullPinged>(notification));
+            await Should.ThrowAsync<ArgumentNullException>(async () => await mediator1.Publish<INullPinged>(notification));
         }
 
         [Fact]
@@ -247,11 +250,12 @@ namespace Colosoft.Mediator.Test
                 });
                 cfg.For<IMediator>().Use<Mediator>();
             });
-            var mediator = container.GetInstance<IMediator>();
+
+            var mediator1 = container.GetInstance<IMediator>();
 
             object notification = null!;
 
-            await Should.ThrowAsync<ArgumentNullException>(async () => await mediator.Publish(notification));
+            await Should.ThrowAsync<ArgumentNullException>(async () => await mediator1.Publish(notification));
         }
 
         [Fact]
@@ -268,11 +272,12 @@ namespace Colosoft.Mediator.Test
                 });
                 cfg.For<IMediator>().Use<Mediator>();
             });
-            var mediator = container.GetInstance<IMediator>();
+
+            var mediator1 = container.GetInstance<IMediator>();
 
             object notification = "totally not notification";
 
-            await Should.ThrowAsync<ArgumentException>(async () => await mediator.Publish(notification));
+            await Should.ThrowAsync<ArgumentException>(async () => await mediator1.Publish(notification));
         }
 
         public interface IPingException : IRequest
@@ -306,11 +311,12 @@ namespace Colosoft.Mediator.Test
                 });
                 cfg.For<IMediator>().Use<Mediator>();
             });
-            var mediator = container.GetInstance<IMediator>();
+
+            var mediator1 = container.GetInstance<IMediator>();
 
             object pingException = new PingException();
 
-            await Should.ThrowAsync<NotImplementedException>(async () => await mediator.Send(pingException));
+            await Should.ThrowAsync<NotImplementedException>(async () => await mediator1.Send(pingException));
         }
 
         [Fact]
@@ -327,11 +333,12 @@ namespace Colosoft.Mediator.Test
                 });
                 cfg.For<IMediator>().Use<Mediator>();
             });
-            var mediator = container.GetInstance<IMediator>();
+
+            var mediator1 = container.GetInstance<IMediator>();
 
             object nonRequest = new NonRequest();
 
-            var argumentException = await Should.ThrowAsync<ArgumentException>(async () => await mediator.Send(nonRequest));
+            var argumentException = await Should.ThrowAsync<ArgumentException>(async () => await mediator1.Send(nonRequest));
             Assert.StartsWith("NonRequest does not implement IRequest", argumentException.Message);
         }
 
@@ -356,11 +363,12 @@ namespace Colosoft.Mediator.Test
                 });
                 cfg.For<IMediator>().Use<Mediator>();
             });
-            var mediator = container.GetInstance<IMediator>();
+
+            var mediator1 = container.GetInstance<IMediator>();
 
             PingException pingException = new PingException();
 
-            await Should.ThrowAsync<NotImplementedException>(async () => await mediator.Send(pingException));
+            await Should.ThrowAsync<NotImplementedException>(async () => await mediator1.Send(pingException));
         }
     }
 }
