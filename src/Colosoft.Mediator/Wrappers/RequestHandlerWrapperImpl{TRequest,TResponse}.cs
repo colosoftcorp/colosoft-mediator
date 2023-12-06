@@ -28,7 +28,17 @@ namespace Colosoft.Mediator.Wrappers
                 .Reverse()
                 .Aggregate(
                     (RequestHandlerDelegate<TResponse>)Handler,
-                    (next, pipeline) => () => pipeline.Handle((TRequest)request, next, cancellationToken))();
+                    (next, pipeline) => () =>
+                    {
+                        if (request is IRequest<TResponse>)
+                        {
+                            return pipeline.Handle((TRequest)request, next, cancellationToken);
+                        }
+                        else
+                        {
+                            return next();
+                        }
+                    })();
         }
     }
 }

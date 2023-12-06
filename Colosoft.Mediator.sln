@@ -5,11 +5,13 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{B282F6AC-0148-4228-B5C6-2528C48BDFA9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colosoft.Mediator", "src\Colosoft.Mediator\Colosoft.Mediator.csproj", "{A0917E3D-74F9-4CDA-92F4-B5D8EA1A203B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colosoft.Mediator", "src\Colosoft.Mediator\Colosoft.Mediator.csproj", "{A0917E3D-74F9-4CDA-92F4-B5D8EA1A203B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{8D473980-C7FB-4A41-BDA2-C268FD61CDE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colosoft.Mediator.Test", "tests\Colosoft.Mediator.Test\Colosoft.Mediator.Test.csproj", "{B3C6C942-D208-4706-9E1F-C1CE4F1F3384}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Colosoft.Mediator.Test", "tests\Colosoft.Mediator.Test\Colosoft.Mediator.Test.csproj", "{B3C6C942-D208-4706-9E1F-C1CE4F1F3384}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Colosoft.Mediator.Validation", "src\Colosoft.Mediator.Validation\Colosoft.Mediator.Validation.csproj", "{FD6CBE07-2AE1-49B1-8B5E-3C55B2A8D877}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +27,10 @@ Global
 		{B3C6C942-D208-4706-9E1F-C1CE4F1F3384}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3C6C942-D208-4706-9E1F-C1CE4F1F3384}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3C6C942-D208-4706-9E1F-C1CE4F1F3384}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD6CBE07-2AE1-49B1-8B5E-3C55B2A8D877}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD6CBE07-2AE1-49B1-8B5E-3C55B2A8D877}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD6CBE07-2AE1-49B1-8B5E-3C55B2A8D877}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD6CBE07-2AE1-49B1-8B5E-3C55B2A8D877}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{A0917E3D-74F9-4CDA-92F4-B5D8EA1A203B} = {B282F6AC-0148-4228-B5C6-2528C48BDFA9}
 		{B3C6C942-D208-4706-9E1F-C1CE4F1F3384} = {8D473980-C7FB-4A41-BDA2-C268FD61CDE6}
+		{FD6CBE07-2AE1-49B1-8B5E-3C55B2A8D877} = {B282F6AC-0148-4228-B5C6-2528C48BDFA9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {17D0D246-17F7-4F78-8386-B14CBCC4B108}

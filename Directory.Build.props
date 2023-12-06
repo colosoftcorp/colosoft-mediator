@@ -8,9 +8,9 @@
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
     <NoWarn>$(NoWarn);NU1605</NoWarn>
     <MinVerMinimumMajorMinor>1.0</MinVerMinimumMajorMinor>
-    <PackageProjectUrl>https://github.com/colosoftcorp/colosoft-data</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/colosoftcorp/colosoft-data</RepositoryUrl>
-		<PackageTags>colosoft; data</PackageTags>
+    <PackageProjectUrl>https://github.com/colosoftcorp/colosoft-mediator</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/colosoftcorp/colosoft-mediator</RepositoryUrl>
+	  <PackageTags>colosoft; mediator</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Label="BasePath">
@@ -18,7 +18,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="7.0.4">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="8.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>

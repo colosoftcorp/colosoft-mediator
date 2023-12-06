@@ -54,7 +54,15 @@ namespace Colosoft.Mediator
                 throw new ArgumentNullException(nameof(request));
             }
 
-            var handler = (RequestHandlerWrapper<TResponse>)RequestHandlers.GetOrAdd(request.GetType(), requestType =>
+            var requestType = request.GetType();
+
+            if (!requestType.IsInterface)
+            {
+                var nativeRequestType = new Lazy<Type>(() => typeof(IRequest<TResponse>));
+                requestType = request.GetType().GetInterfaces().FirstOrDefault(f => nativeRequestType.Value.IsAssignableFrom(f)) ?? requestType;
+            }
+
+            var handler = (RequestHandlerWrapper<TResponse>)RequestHandlers.GetOrAdd(requestType, requestType =>
             {
                 var wrapperType = typeof(RequestHandlerWrapperImpl<,>).MakeGenericType(requestType, typeof(TResponse));
                 var wrapper = Activator.CreateInstance(wrapperType) ?? throw new InvalidOperationException($"Could not create wrapper type for {requestType}");
@@ -72,7 +80,9 @@ namespace Colosoft.Mediator
                 throw new ArgumentNullException(nameof(request));
             }
 
-            var handler = (RequestHandlerWrapper)RequestHandlers.GetOrAdd(typeof(TRequest), requestType =>
+            var requestType = typeof(TRequest);
+
+            var handler = (RequestHandlerWrapper)RequestHandlers.GetOrAdd(requestType == typeof(IRequest) ? request.GetType() : requestType, requestType =>
             {
                 var wrapperType = typeof(RequestHandlerWrapperImpl<>).MakeGenericType(requestType);
                 var wrapper = Activator.CreateInstance(wrapperType) ?? throw new InvalidOperationException($"Could not create wrapper type for {requestType}");

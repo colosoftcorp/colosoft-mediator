@@ -296,27 +296,12 @@ namespace Colosoft.Mediator.Test
             }
         }
 
-        [Fact]
-        public async Task Should_throw_exception_for_non_generic_send_when_exception_occurs()
+        public class PingException2Handler : IRequestHandler<PingException>
         {
-            var container = new Container(cfg =>
+            public Task Handle(PingException request, CancellationToken cancellationToken)
             {
-                cfg.Scan(scanner =>
-                {
-                    scanner.AssemblyContainingType(typeof(NullPinged));
-                    scanner.IncludeNamespaceContainingType<Ping>();
-                    scanner.WithDefaultConventions();
-                    scanner.AddAllTypesOf(typeof(IRequestHandler<,>));
-                    scanner.AddAllTypesOf(typeof(IRequestHandler<>));
-                });
-                cfg.For<IMediator>().Use<Mediator>();
-            });
-
-            var mediator1 = container.GetInstance<IMediator>();
-
-            object pingException = new PingException();
-
-            await Should.ThrowAsync<NotImplementedException>(async () => await mediator1.Send(pingException));
+                throw new NotImplementedException();
+            }
         }
 
         [Fact]
@@ -366,7 +351,7 @@ namespace Colosoft.Mediator.Test
 
             var mediator1 = container.GetInstance<IMediator>();
 
-            PingException pingException = new PingException();
+            IPingException pingException = new PingException();
 
             await Should.ThrowAsync<NotImplementedException>(async () => await mediator1.Send(pingException));
         }

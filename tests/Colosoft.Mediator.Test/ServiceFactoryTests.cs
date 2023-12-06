@@ -4,11 +4,20 @@ namespace Colosoft.Mediator.Test
 {
     public class ServiceFactoryTests
     {
-        public class Ping : IRequest<Pong>
+        public interface IPong
+        {
+            string? Message { get; }
+        }
+
+        public interface IPing : IRequest<IPong>
         {
         }
 
-        public class Pong
+        public class Ping : IPing
+        {
+        }
+
+        public class Pong : IPong
         {
             public string? Message { get; set; }
         }

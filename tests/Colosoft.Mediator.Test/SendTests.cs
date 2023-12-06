@@ -202,7 +202,6 @@ namespace Colosoft.Mediator.Test
 
             var mediator = container.GetInstance<ISender>();
 
-            // wrap requests in an array, so this test won't break on a 'replace with var' refactoring
             var requests = new IRequest[] { new VoidPing() };
             await mediator.Send(requests[0]);
 
