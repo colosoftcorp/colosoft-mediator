@@ -62,10 +62,10 @@ namespace Colosoft.Mediator
                 requestType = request.GetType().GetInterfaces().FirstOrDefault(f => nativeRequestType.Value.IsAssignableFrom(f)) ?? requestType;
             }
 
-            var handler = (RequestHandlerWrapper<TResponse>)RequestHandlers.GetOrAdd(requestType, requestType =>
+            var handler = (RequestHandlerWrapper<TResponse>)RequestHandlers.GetOrAdd(requestType, requestType1 =>
             {
-                var wrapperType = typeof(RequestHandlerWrapperImpl<,>).MakeGenericType(requestType, typeof(TResponse));
-                var wrapper = Activator.CreateInstance(wrapperType) ?? throw new InvalidOperationException($"Could not create wrapper type for {requestType}");
+                var wrapperType = typeof(RequestHandlerWrapperImpl<,>).MakeGenericType(requestType1, typeof(TResponse));
+                var wrapper = Activator.CreateInstance(wrapperType) ?? throw new InvalidOperationException($"Could not create wrapper type for {requestType1}");
                 return (RequestHandlerBase)wrapper;
             });
 
@@ -82,10 +82,10 @@ namespace Colosoft.Mediator
 
             var requestType = typeof(TRequest);
 
-            var handler = (RequestHandlerWrapper)RequestHandlers.GetOrAdd(requestType == typeof(IRequest) ? request.GetType() : requestType, requestType =>
+            var handler = (RequestHandlerWrapper)RequestHandlers.GetOrAdd(requestType == typeof(IRequest) ? request.GetType() : requestType, requestType1 =>
             {
-                var wrapperType = typeof(RequestHandlerWrapperImpl<>).MakeGenericType(requestType);
-                var wrapper = Activator.CreateInstance(wrapperType) ?? throw new InvalidOperationException($"Could not create wrapper type for {requestType}");
+                var wrapperType = typeof(RequestHandlerWrapperImpl<>).MakeGenericType(requestType1);
+                var wrapper = Activator.CreateInstance(wrapperType) ?? throw new InvalidOperationException($"Could not create wrapper type for {requestType1}");
                 return (RequestHandlerBase)wrapper;
             });
 

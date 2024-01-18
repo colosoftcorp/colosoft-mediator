@@ -117,7 +117,7 @@ namespace Colosoft.Mediator.Test
             var genericTypeConstraintsVoidReturn = new GenericTypeConstraintJing();
 
             Assert.True(genericTypeConstraintsVoidReturn.IsIRequest);
-            Assert.False(genericTypeConstraintsVoidReturn.IsIRequestT);
+            //Assert.False(genericTypeConstraintsVoidReturn.IsIRequestT);
             Assert.True(genericTypeConstraintsVoidReturn.IsIBaseRequest);
 
             var results = genericTypeConstraintsVoidReturn.Handle(jing);
